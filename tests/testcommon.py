@@ -51,14 +51,33 @@ modpath = r"C:\Users\yijin\Downloads"
 
 # tickers = pd.read_csv(f'{modpath}/{dataspath}/tickers.csv')['ticker'].tolist()
 # datafiles = [ tickers[i] + '.csv' for i,_ in enumerate(tickers)]
-datafiles = ['000008.SZ.csv', '000006.SZ.csv']
+datafiles = ['000723.SZ.csv']
+# ['600859.SH', '000723.SZ', '603000.SH', '600516.SH', '002625.SZ']
+# 600859.SH 2020-03-27T00:00:00.000000000 2600859.SH020-12-22T00:00:00.000000000
+# 000723.SZ 2018-12-26T00:00:00.000000000 2019-09-23T00:00:00.000000000
+# 603000.SH 2018-12-07T00:00:00.000000000 2019-09-03T00:00:00.000000000
+# 600516.SH 2017-05-09T00:00:00.000000000 2018-01-26T00:00:00.000000000
+# momentums['000723.SZ']['2018-12-26':'2019-09-23']
+# date
+# 2018-12-26         NaN
+# 2018-12-27         NaN
+# 2018-12-28         NaN
+# 2019-01-02         NaN
+# 2019-01-03         NaN
+#                 ...
+# 2019-09-17    0.163461
+# 2019-09-18    0.161992
+# 2019-09-19    0.157573
+# 2019-09-20    0.155080
+# 2019-09-23    0.150915
+
 DATAFEED = wind.CSVDataFeed
 
 # FROMDATE = datetime.datetime(2006, 1, 1)
 # TODATE = datetime.datetime(2006, 12, 31)
 
-FROMDATE = datetime.datetime(2016, 6, 13)
-TODATE = datetime.datetime(2021, 12, 13)
+FROMDATE = datetime.datetime(2018, 12, 26)
+TODATE = datetime.datetime(2019, 9, 23)
 
 def getdata(index, fromdate=FROMDATE, todate=TODATE):
 
