@@ -27,6 +27,9 @@ import os.path
 import sys
 
 # append module root directory to sys.path
+import pandas as pd
+import wind
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import backtrader as bt
@@ -34,18 +37,28 @@ import backtrader.utils.flushfile
 from backtrader.metabase import ParamsBase
 
 
-modpath = os.path.dirname(os.path.abspath(__file__))
-dataspath = '../datas'
-datafiles = [
-    '2006-day-001.txt',
-    '2006-week-001.txt',
-]
+# modpath = os.path.dirname(os.path.abspath(__file__))
+# dataspath = '../datas'
+# datafiles = [
+#     '2006-day-001.txt',
+#     '2006-week-001.txt',
+# ]
+# DATAFEED = bt.feeds.BacktraderCSVData
+from pathlib import Path
+import os
+dataspath = Path('csi500','csi500_adj', 'data')
+modpath = r"C:\Users\yijin\Downloads"
 
-DATAFEED = bt.feeds.BacktraderCSVData
+# tickers = pd.read_csv(f'{modpath}/{dataspath}/tickers.csv')['ticker'].tolist()
+# datafiles = [ tickers[i] + '.csv' for i,_ in enumerate(tickers)]
+datafiles = ['000008.SZ.csv', '000006.SZ.csv']
+DATAFEED = wind.CSVDataFeed
 
-FROMDATE = datetime.datetime(2006, 1, 1)
-TODATE = datetime.datetime(2006, 12, 31)
+# FROMDATE = datetime.datetime(2006, 1, 1)
+# TODATE = datetime.datetime(2006, 12, 31)
 
+FROMDATE = datetime.datetime(2016, 6, 13)
+TODATE = datetime.datetime(2021, 12, 13)
 
 def getdata(index, fromdate=FROMDATE, todate=TODATE):
 

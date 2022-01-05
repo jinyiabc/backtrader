@@ -31,7 +31,7 @@ chkvals = [
     ['67.050000', '-34.160000', '67.630000'],
 ]
 
-chkmin = 13
+chkmin = 90
 chkind = btind.Momentum
 
 
@@ -40,7 +40,7 @@ def test_run(main=False):
     testcommon.runtest(datas,
                        testcommon.TestStrategy,
                        main=main,
-                       plot=main,
+                       plot=False,
                        chkind=chkind,
                        chkmin=chkmin,
                        chkvals=chkvals)
